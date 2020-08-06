@@ -49,7 +49,7 @@ const hogs = [
     'highest medal achieved': 'wood'
   },
   {
-    name: 'TruffleShuffle',
+    name: 'Truffle Shuffle',
     specialty: 'Finding truffles',
     greased: true,
     weight: 4.0,
@@ -91,5 +91,24 @@ const hogs = [
     'highest medal achieved': 'wood'
   }
 ];
+
+//#Source https://bit.ly/2neWfJ2
+const toSnakeCase = str =>
+{  
+  return (
+    str &&
+    str
+    .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
+    .map(x => x.toLowerCase())
+    .join('_')
+    )
+}
+  
+const pigPicSrc = (name) =>
+{   
+  return `../hog-imgs/${toSnakeCase(name)}.jpg`
+}
+
+hogs.forEach(hog => {hog.img = pigPicSrc(hog.name)})
 
 export default hogs;
